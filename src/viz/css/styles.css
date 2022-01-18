@@ -1,0 +1,25 @@
+html {
+  font-family: 'Trebuchet MS', sans-serif;
+}
+
+.unsafe-set {
+  fill: red;
+}
+
+#ideal-cross {
+  fill: green;
+}
+
+#init-cross {
+  fill: blue;
+}
+
+p {
+  max-width: 900px;
+  font-size: larger;
+}
+
+.viz-container {
+  display: inline-block;
+  padding: 25px;
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Visualizing Safe Driving</title>
+        <link rel='stylesheet' href='css/styles.css'>
+        <script src='https://d3js.org/d3.v7.min.js'></script>
+        <script src='scripts/index.js'></script>
+    </head>
+    <body>
+        <div id='wrapper'>
+            <h3>Visualizing Safe Driving</h3>
+            <details>
+                <summary>Intro</summary>
+                <p>Fully self-driving cars are almost here, and features like adaptive cruise control have been around for years.
+                    Do we have any strategies for making sure that systems like these don't have flaws that could lead to fatal outcomes?
+                    While we don't know what goes on behind closed doors at major car manufacturers, some mathematical tools do exist to help
+                    out. Below is a visualization demonstrating one approach: approximating the possible outcomes of a system over
+                    time in such a way that we can be sure whether or not the system can get into an unsafe situation.
+                </p>
+            </details>
+            <br>
+            <details>
+                <summary>Using the visualization</summary>
+                <p>In this scenario, your blue car on the left would attempt to follow the red car on the right at a fixed distance of 10 meters.
+                    The two cars start out at the same speed, but the front red car can accelerate or decelerate without warning.
+                    Don't worry, though - your car adjusts automatically!
+                </p>
+                <p>
+                    You can change how far away your car starts from the front car below, as well as project out into the future to see
+                    if there's any chance of your car doing something unsafe later (in other words, landing in a red zone on the graph).
+                    When the blue dot is more left on the graph, that means you would start out farther
+                    behind the lead, while more to the right means you would be closer.
+                    The x-axis is for distance, and the y-axis is for relative speed between the two cars.
+                    The green cross stays put to show an "ideal" situation: your car being exactly 10 meters
+                    behind the lead, moving at the same speed.
+                </p>
+                <p>
+                    Try out different values for the inputs shown below, and see how those values affect potential safety outcomes
+                    by watching how the areas with a thin blue outline change. As long as those areas don't land on a red region,
+                    you can be sure that your ride would be safe.
+                </p>
+            </details>
+            <br>
+            <div id='controls'>
+                Initial following-distance error (negative means you start <em>closer</em> to the front car):&nbsp;
+                <input id='init-d-input' type='number' value='0' min='-5' max='9' onkeydown="return false"/>
+                <br>
+                Your car's initial acceleration:&nbsp;
+                <input id='init-a-input' type='number' value='0' min='-9' max='1' onkeydown="return false"/>
+                <br>
+                Seconds in the future (possible outcomes have a thin blue outline):&nbsp;
+                <input id='final-t-input' type='number' value='1' min='.5' max='10' step='.5' onkeydown="return false"/>
+                <br>
+                <input id='intermediate-checkbox' type='checkbox' name='intermediate'/>
+                <label for='intermediate-checkbox'>Show intermediate values?</label>
+            </div>
+            <div id='visualizations'>
+                <div class='viz-container'>
+                    <svg id='chart'></svg>
+                </div>
+                <div class='viz-container'>
+                    <img src='two_cars.png' alt='A blue car following a red car at a distance of 10 meters'>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
